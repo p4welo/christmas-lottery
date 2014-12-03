@@ -1,0 +1,13 @@
+{
+  "name": "christmas-lottery",
+  "version": "1.0.0",
+  "main": "index.html",
+  "dependencies": {
+    "sockjs-client": "latest",
+    "stomp-websocket": "latest",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.1",
+    "font-awesome": "~4.2.0",
+    "angularjs": "~1.3.4"
+  }
+}
