@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="christmas">
+<head lang="pl">
+    <meta charset="UTF-8">
+    <title>Świąteczna loteria</title>
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <link href="vendor/animate.css/animate.min.css" rel="stylesheet" media="screen" />
+    <link href="assets/css/style.css" rel="stylesheet" media="screen"/>
+</head>
+</head>
+<body ng-controller="indexController">
+<div class="container">
+
+    <ul>
+        <li ng-repeat="message in messages">
+            <!-- exit a message -->
+            <input ng-model="message.text" ng-change="messages.$save(message)" />
+            <!-- delete message -->
+            <button ng-click="messages.$remove(message)">X</button>
+        </li>
+    </ul>
+    <!-- push a new message into the array -->
+    <form ng-submit="addMessage(newMessageText)">
+        <input ng-model="newMessageText" />
+        <button type="submit">add message</button>
+    </form>
+</div>
+
+<script src="vendor/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="vendor/angularjs/angular.min.js" type="text/javascript"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+<!--<script src="vendor/sockjs-client/dist/sockjs.js" type="text/javascript"></script>-->
+<!--<script src="vendor/stomp-websocket/lib/stomp.min.js" type="text/javascript"></script>-->
+
+<script src="vendor/firebase/firebase.js" type="text/javascript"></script>
+<script src="vendor/angularfire/dist/angularfire.min.js" type="text/javascript"></script>
+
+<script src="app/app.js" type="text/javascript"></script>
+</body>
+</html>
