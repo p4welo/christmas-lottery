@@ -21,7 +21,7 @@ angular.module("christmas", ["firebase"])
 
         $scope.messages = initChat();
         $scope.addMessage = function (text) {
-            $scope.messages.$add({text: text});
             $scope.newMessageText = "";
+            $scope.messages.$add({text: text, date: new Date()});
         }
     })

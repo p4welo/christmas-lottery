@@ -3,6 +3,7 @@
 <head lang="pl">
     <meta charset="UTF-8">
     <title>Świąteczna loteria</title>
+    <link rel="shortcut icon" href="assets/img/santa-claus-icon.png">
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen"/>
     <link href="vendor/animate.css/animate.min.css" rel="stylesheet" media="screen"/>
@@ -17,16 +18,19 @@
     <div ng-if="!loading" class="fadeIn animated">
         <div class="col-sm-5">
             <div class="list-group">
-                <a class="list-group-item fadeIn animated" ng-repeat="message in messages">
-                <span class="pull-right" href="javascript:void(0)">
-                    <i class="fa fa-remove text-danger" ng-click="messages.$remove(message)"></i>
-                </span>
-
-                    <p class="list-group-item-text" ng-bind="message.text"></p>
-                </a>
+            <!--<div class="list-group" style="max-height: 400px; overflow-y: scroll">-->
+                <div class="list-group-item fadeInLeft animated" ng-repeat="message in messages">
+                    <small class="row">
+                        user napisał
+                        <span ng-bind="message.date"></span>
+                    </small>
+                    <div class="text-right">
+                        <p class="list-group-item-text" ng-bind="message.text"></p>
+                    </div>
+                </div>
             </div>
             <form ng-submit="addMessage(newMessageText)">
-                <input ng-model="newMessageText"/>
+                <input class="form-control" ng-model="newMessageText" type="text"/>
                 <button type="submit">add message</button>
             </form>
         </div>
