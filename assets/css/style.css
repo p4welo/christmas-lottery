@@ -1,3 +1,12 @@
+body {
+    background: url("../img/bg.jpg") repeat scroll center top transparent;
+}
+
+.garland_top {
+    height: 165px;
+    background: url("../img/gar_01.png") repeat-x scroll center top transparent;
+}
+
 .list-remove {
     cursor: pointer;
 }

@@ -1,67 +1,64 @@
 <div class="fadeIn animated">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="assets/img/santa-claus-icon.png" style="height: 30px">
-            </a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">{{login}}</a></li>
-        </ul>
-        </div>
-    </nav>
+    <!--<nav class="navbar navbar-default" role="navigation">-->
+    <!--<div class="container">-->
+    <!--<div class="navbar-header">-->
+    <!--<a class="navbar-brand" href="#">-->
+    <!--<img alt="Brand" src="assets/img/santa-claus-icon.png" style="height: 30px">-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--<ul class="nav navbar-nav navbar-right">-->
+    <!--<li><a href="#">{{login}}</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</nav>-->
 
     <div class="container">
-        <div class="col-sm-7 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-7 col-xs-12">
 
-            <div class="col-sm-7">
-                <div class="input-group" style="margin-bottom: 20px">
-                    <input type="text" class="form-control" placeholder="Dodaj..." ng-model="newPerson"
-                           ng-keydown="addPerson($event)">
+                    <div class="col-sm-7">
+                        <div class="input-group" style="margin-bottom: 20px">
+                            <input type="text" class="form-control" placeholder="Dodaj..." ng-model="newPerson"
+                                   ng-keydown="addPerson($event)">
 
-                    <label class="input-group-addon">
-                        <i class="fa fa-plus"></i>
-                    </label>
-                </div>
-                <div class="list-group">
-                    <a href="javascript:void(0)" class="list-group-item fadeIn animated" ng-class="{'active' : selected == person}" ng-repeat="person in people" ng-click="select(person)">
-                        <p class="list-group-item-text" ng-bind="person.name"></p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-5" ng-if="selected!=null">
-                <button ng-click="delPerson(selected)" class="btn btn-danger">Usuń</button>
-            </div>
-        </div>
-        <div class="col-sm-5 col-xs-12">
-            <legend>Chat</legend>
-            <div class="col-sm-9">
-                <div class="list-group">
-                    <div class="list-group-item fadeIn animated" ng-repeat="message in messages">
-                        <p class="list-group-item-text" ng-bind="message.text"></p>
+                            <label class="input-group-addon">
+                                <i class="fa fa-plus"></i>
+                            </label>
+                        </div>
+                        <div class="list-group">
+                            <a href="javascript:void(0)" class="list-group-item fadeIn animated"
+                               ng-class="{'active' : selected == person}" ng-repeat="person in people"
+                               ng-click="select(person)">
+                                <p class="list-group-item-text" ng-bind="person.name"></p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-5" ng-if="selected!=null">
+                        <button ng-click="delPerson(selected)" class="btn btn-danger">Usuń</button>
                     </div>
                 </div>
-                <input type="text" class="form-control"/>
-            </div>
-            <div class="col-sm-3">
-                <span class="thumbnail text-center" ng-repeat="key in onlinePeople">
-                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg"/>
-                    <span style="top: -15px; position: relative;" class="pull-right">
-                        <span class="label label-success" ng-if="key.$value=='online'">&nbsp;</span>
-                        <span class="label label-danger" ng-if="key.$value=='offline'">&nbsp;</span>
-                    </span>
-                    <strong ng-bind="key.$id"></strong>
-                </span>
-                <!--<span class="thumbnail text-center">-->
-                    <!--<img src="https://s3.amazonaws.com/uifaces/faces/twitter/aaroni/128.jpg"/>-->
-                    <!--<strong>Mikołaj</strong>-->
-                <!--</span>-->
-                <!--<span class="thumbnail text-center">-->
-                    <!--<img src="https://s3.amazonaws.com/uifaces/faces/twitter/chadengle/128.jpg"/>-->
-                    <!--<strong>Maciej</strong>-->
-                <!--</span>-->
-
+                <div class="col-sm-5 col-xs-12">
+                    <legend>Chat</legend>
+                    <div class="col-sm-9">
+                        <div class="list-group">
+                            <div class="list-group-item fadeIn animated" ng-repeat="message in messages">
+                                <p class="list-group-item-text" ng-bind="message.text"></p>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control"/>
+                    </div>
+                    <div class="col-sm-3">
+                        <span class="thumbnail text-center" ng-repeat="key in onlinePeople">
+                            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg"/>
+                            <span style="top: -15px; position: relative;" class="pull-right">
+                                <span class="label label-success" ng-if="key.$value=='online'">&nbsp;</span>
+                                <span class="label label-danger" ng-if="key.$value=='offline'">&nbsp;</span>
+                            </span>
+                            <strong ng-bind="key.$id"></strong>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
