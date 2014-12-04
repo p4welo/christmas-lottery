@@ -12,15 +12,13 @@ angular.module("christmas")
                 password : $scope.password
             }, function(error, authData) {
                 if (error === null) {
-                    // user authenticated with Firebase
                     $rootScope.isLoggedIn = true;
                     $rootScope.login = $scope.email;
                     $state.go('lottery');
                 } else {
+                    $scope.loginError = true;
                     $rootScope.isLoggedIn = false;
                     $scope.loggingIn = false;
-                    $scope.loginError = true;
-                    console.log("Error authenticating user:", error);
                 }
             });
         }
