@@ -20,6 +20,7 @@ angular.module("christmas")
                     $rootScope.isLoggedIn = false;
                     $scope.loggingIn = false;
                 }
+                $scope.$apply();
             });
         }
     });
