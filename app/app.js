@@ -1,7 +1,7 @@
 angular.module("christmas", ["firebase", 'ui.router'])
 
     .config(function ($stateProvider, $urlRouterProvider, $stateProvider) {
-        $urlRouterProvider.otherwise("/lottery");
+        $urlRouterProvider.otherwise("/login");
 
         $stateProvider
             .state('lottery', {

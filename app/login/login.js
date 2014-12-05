@@ -10,7 +10,7 @@ angular.module("christmas")
             ref.authWithPassword({
                 email : $scope.email,
                 password : $scope.password
-            }, function(error, authData) {
+            }, function(error) {
                 if (error === null) {
                     $rootScope.isLoggedIn = true;
                     $rootScope.login = $scope.email;
