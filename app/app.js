@@ -14,4 +14,17 @@ angular.module("christmas", ["firebase", 'ui.router'])
                 templateUrl: "app/login/login.html",
                 controller: "loginController"
             })
+            .state('admin', {
+                url: '/admin',
+                templateUrl: "app/admin/admin.html",
+                controller: "adminController"
+            })
+    })
+
+    .run(function ($rootScope, $state) {
+        $rootScope.logout = function () {
+            $rootScope.isLoggedIn = false;
+            $rootScope.login = "";
+            $state.go('login');
+        }
     })
