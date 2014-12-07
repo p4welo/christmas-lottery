@@ -1,4 +1,4 @@
-angular.module("christmas", ["firebase", 'ui.router'])
+angular.module("christmas", ["firebase", 'ui.router', 'timer'])
 
     .config(function ($stateProvider, $urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise("/login");

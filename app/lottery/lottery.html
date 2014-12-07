@@ -1,46 +1,18 @@
 <div class="fadeIn animated">
-    <!--<div class="col-sm-7 co     l-xs-12">-->
-
-        <!--<div class="col-sm-7">-->
-            <!--<div class="input-group" style="margin-bottom: 20px">-->
-                <!--<input type="text" class="form-control" placeholder="Dodaj..." ng-model="newPerson"-->
-                       <!--ng-keydown="addPerson($event)">-->
-
-                <!--<label class="input-group-addon">-->
-                    <!--<i class="fa fa-plus"></i>-->
-                <!--</label>-->
-            <!--</div>-->
-            <!--<div class="list-group">-->
-                <!--<a href="javascript:void(0)" class="list-group-item fadeIn animated"-->
-                   <!--ng-class="{'active' : selected == person}" ng-repeat="person in people"-->
-                   <!--ng-click="select(person)">-->
-                    <!--<p class="list-group-item-text" ng-bind="person.name"></p>-->
-                <!--</a>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-sm-5" ng-if="selected!=null">-->
-            <!--<button ng-click="delPerson(selected)" class="btn btn-danger">Usuń</button>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-sm-5 col-xs-12">-->
-        <!--<div class="col-sm-9">-->
-            <!--<div class="list-group">-->
-                <!--<div class="list-group-item fadeIn animated" ng-repeat="message in messages">-->
-                    <!--<p class="list-group-item-text" ng-bind="message.text"></p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<input type="text" class="form-control"/>-->
-        <!--</div>-->
-        <!--<div class="col-sm-3">-->
-            <!--<span class="thumbnail text-center" ng-repeat="key in onlinePeople">-->
-                <!--<img ng-src="{{resolveAvatar(key.$id)}}"/>-->
-                <!--<span style="top: -15px; position: relative;" class="pull-right">-->
-                    <!--<span class="label label-success" ng-if="key.$value=='online'">&nbsp;</span>-->
-                    <!--<span class="label label-danger" ng-if="key.$value=='offline'">&nbsp;</span>-->
-                <!--</span>-->
-                <!--<strong ng-bind="key.$id"></strong>-->
-            <!--</span>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--{{avatars}}-->
+    <h3 class="alert alert-success text-center" style="margin-bottom: 20px">
+        Do Wigilii zostało:
+        <br/>
+        <timer end-time="christmasDay">{{days}} dni, {{hours}} godzin, {{minutes}} minut, {{seconds}} sekund.</timer>
+    </h3>
+    <h3 class="alert alert-danger text-center" style="margin-bottom: 20px">
+        Nie przeprowadzono losowania
+    </h3>
+    <div>
+        <div class="col-sm-6">
+            <legend>Osoby w puli:</legend>
+        </div>
+        <div class="col-sm-6">
+            <legend>Kupuję prezenty:</legend>
+        </div>
+    </div>
 </div>
