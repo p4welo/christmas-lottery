@@ -79,3 +79,7 @@ body {
     bottom: 0;
     position: absolute;
 }
+
+.nav > li > a {
+    padding: 15px 15px;
+}
