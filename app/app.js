@@ -28,3 +28,31 @@ angular.module("christmas", ["firebase", 'ui.router'])
             $state.go('login');
         }
     })
+
+    .controller("chatController", function ($scope, $rootScope, messageFactory, avatarFactory) {
+        $scope.chatVisible = false;
+        $scope.messages = messageFactory.findAll();
+        $scope.newMsg = "";
+        $scope.resolveAvatar = function (login) {
+            return avatarFactory.getByLogin(login)
+        }
+        $scope.send = function (e) {
+            if (e.keyCode != 13) return;
+            messageFactory.add({
+                author: $rootScope.login.split("@")[0],
+                text: $scope.newMsg,
+                dateTime: Date.now()
+            });
+            $scope.newMsg = "";
+        }
+        $scope.toggleChat = function () {
+            $scope.chatVisible = !$scope.chatVisible;
+        }
+    })
+
+    .controller("menuController", function ($scope, presenceFactory, avatarFactory) {
+        $scope.onlinePeople = presenceFactory.onlinePeople();
+        $scope.resolveAvatar = function (login) {
+            return avatarFactory.getByLogin(login)
+        }
+    })

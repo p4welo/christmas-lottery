@@ -1,8 +1,10 @@
+var FIREBASE_URL = "https://shining-fire-1146.firebaseio.com";
+
 angular.module("christmas")
 
     .factory("messageFactory", function ($firebase) {
-        var ref = new Firebase("https://shining-fire-1146.firebaseio.com");
-        var messages = $firebase(ref.child('messages')).$asArray();
+        var ref = new Firebase(FIREBASE_URL);
+        var messages = $firebase(ref.child('messages').orderByChild("dateTime").limitToLast(20)).$asArray();
 
         return {
             findAll: function () {
@@ -18,7 +20,7 @@ angular.module("christmas")
     })
 
     .factory("personFactory", function ($firebase) {
-        var ref = new Firebase("https://shining-fire-1146.firebaseio.com");
+        var ref = new Firebase(FIREBASE_URL);
         var people = $firebase(ref.child('people')).$asArray();
 
         return {
@@ -37,8 +39,8 @@ angular.module("christmas")
     .factory("presenceFactory", function ($firebase) {
         return {
             initPresence: function (login) {
-                var amOnline = new Firebase('https://shining-fire-1146.firebaseio.com/.info/connected');
-                var userRef = new Firebase('https://shining-fire-1146.firebaseio.com/presence/' + login);
+                var amOnline = new Firebase(FIREBASE_URL + '/.info/connected');
+                var userRef = new Firebase(FIREBASE_URL + '/presence/' + login);
 
                 amOnline.on('value', function (snapshot) {
                     if (snapshot.val()) {
@@ -49,35 +51,23 @@ angular.module("christmas")
             },
 
             onlinePeople: function () {
-                var ref = new Firebase("https://shining-fire-1146.firebaseio.com");
+                var ref = new Firebase(FIREBASE_URL);
                 return $firebase(ref.child('presence')).$asArray();
             }
         }
     })
 
-    .factory("avatarFactory", function ($firebase) {
+    .factory("avatarFactory", function () {
+        var avatars = {
+            'p4welo': "https://scontent-a-fra.xx.fbcdn.net/hprofile-xpa1/v/t1.0-1/p160x160/10363855_10201148437991960_3586705723305547099_n.jpg?oh=a60a7a60ffe7f07e9ae8ebfeb3219731&oe=54FC1EAF",
+            'gaduss': "https://scontent-b-fra.xx.fbcdn.net/hprofile-xfa1/v/t1.0-1/c71.21.259.259/s160x160/430347_447825938591199_1430987149_n.jpg?oh=52c0b27e268508e8553dda1d36c74a81&oe=54FEB4FE",
+            'kkasperek': "https://scontent-b-fra.xx.fbcdn.net/hprofile-xpf1/v/t1.0-1/p160x160/10614311_10203443061534922_2717499162534510699_n.jpg?oh=d119ac8a7bd366bf808115f989534748&oe=54FC000F",
+            'kacpy': "https://scontent-a-fra.xx.fbcdn.net/hprofile-xpa1/v/t1.0-1/c27.0.160.160/p160x160/10307386_874348512591490_4010475776237310706_n.jpg?oh=76b948022866186610018bde60aa9d0a&oe=550BDFAF",
+            'barbara': "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c39.8.103.103/1979537_302592716555425_469194671_n.jpg?oh=ec03528cbed972b23efea3bb060136f2&oe=54FEA5C4&__gda__=1425663590_fb67e680160d37203ac1c7cdd4bb2555"
+        }
         return {
-            initAvatars: function () {
-                var avatarRef = new Firebase('https://shining-fire-1146.firebaseio.com/avatars/p4welo');
-                var list = $firebase(avatarRef).$asArray();
-                avatarRef.set({
-                    url: "https://scontent-a-fra.xx.fbcdn.net/hprofile-xpa1/v/t1.0-1/p160x160/10363855_10201148437991960_3586705723305547099_n.jpg?oh=a60a7a60ffe7f07e9ae8ebfeb3219731&oe=54FC1EAF"
-                });
-                avatarRef = new Firebase('https://shining-fire-1146.firebaseio.com/avatars/gaduss');
-                avatarRef.set({
-                    url: "https://scontent-b-fra.xx.fbcdn.net/hprofile-xfa1/v/t1.0-1/c71.21.259.259/s160x160/430347_447825938591199_1430987149_n.jpg?oh=52c0b27e268508e8553dda1d36c74a81&oe=54FEB4FE"
-                });
-                avatarRef = new Firebase('https://shining-fire-1146.firebaseio.com/avatars/kkasperek');
-                avatarRef.set({
-                    url: "https://scontent-b-fra.xx.fbcdn.net/hprofile-xpf1/v/t1.0-1/p160x160/10614311_10203443061534922_2717499162534510699_n.jpg?oh=d119ac8a7bd366bf808115f989534748&oe=54FC000F"
-                });
-            },
-            findAll : function () {
-                var ref = new Firebase("https://shining-fire-1146.firebaseio.com");
-                return $firebase(ref.child('avatars')).$asArray();
-            },
-            findByLogin : function(login) {
-                return $firebase(new Firebase('https://shining-fire-1146.firebaseio.com/avatars/' + login)).$asObject();
+            getByLogin: function (login) {
+                return avatars[login];
             }
         }
     })

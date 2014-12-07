@@ -1,38 +1,66 @@
 <!DOCTYPE html>
-<html ng-app="christmas">
+<html>
 <head lang="pl">
     <meta charset="UTF-8">
     <title>Świąteczna loteria</title>
+
     <link rel="shortcut icon" href="assets/img/santa-claus-icon.png">
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen"/>
     <link href="vendor/animate.css/animate.min.css" rel="stylesheet" media="screen"/>
     <link href="assets/css/style.css" rel="stylesheet" media="screen"/>
 </head>
-<body>
+<body ng-app="christmas">
 <div class="garland_top"></div>
-<div ng-class="{'container': isLoggedIn}">
+<div ng-class="{'container': isLoggedIn}" ng-cloak>
     <div ng-class="{'panel panel-default' : isLoggedIn}">
-        <ul class="nav nav-tabs" ng-if="isLoggedIn">
-            <li role="presentation" ui-sref-active="active">
+        <ul class="nav nav-tabs" ng-if="isLoggedIn" ng-controller="menuController">
+            <li ui-sref-active="active">
                 <a ui-sref="lottery">Loteria</a>
             </li>
-            <li role="presentation" ui-sref-active="active">
+            <li ui-sref-active="active">
                 <a ui-sref="admin">Zarządzaj</a>
             </li>
-            <li role="presentation" class="pull-right">
+            <li class="pull-right">
                 <a class="logout-link" ng-click="logout()">
                     Wyloguj
                     <i class="fa fa-sign-out"></i>
                 </a>
             </li>
+            <li class="pull-right users-tab" ng-repeat="key in onlinePeople | orderBy: '-$id'">
+                <span class="thumbnail text-center">
+                    <img ng-src="{{resolveAvatar(key.$id)}}" title="{{key.$id}}">
+                    <span class="pull-right">
+                        <span class="label label-success" ng-if="key.$value=='online'">&nbsp;</span>
+                        <span class="label label-danger" ng-if="key.$value=='offline'">&nbsp;</span>
+                    </span>
+                </span>
+            </li>
+
         </ul>
         <div class="panel-body">
             <div ui-view></div>
         </div>
     </div>
 </div>
-
+<div ng-controller="chatController" ng-if="isLoggedIn" class="chat-box" ng-cloak>
+    <button type="button" class="btn btn-success btn-chat" ng-class="{'btn-sm' : chatVisible, 'btn-lg' : !chatVisible, 'btn-chat-expanded': chatVisible}" ng-click="toggleChat()">
+        <i class="glyphicon" ng-class="{'glyphicon-comment' : !chatVisible, 'glyphicon-chevron-down' : chatVisible}"></i>
+    </button>
+    <div class="chat-box-inner" ng-show="chatVisible">
+        <div style="height: 100%; overflow: scroll; padding: 10px 20px 10px 20px;">
+            <div class="row fadeIn animated" ng-repeat="msg in messages | orderBy: '-dateTime'">
+                <span class="thumbnail text-center pull-left" style="margin-right: 10px">
+                    <img ng-src="{{resolveAvatar(msg.author)}}" title="{{key.$id}}">
+                </span>
+                <strong>{{msg.author}}</strong>
+                <small class="pull-right">{{ msg.dateTime | date: 'dd-MM-yyyy hh:mm:ss' }}</small>
+                <p class="list-group-item-text" ng-bind="msg.text"></p>
+            </div>
+        </div>
+        <input type="text" class="form-control" ng-model="newMsg" ng-keydown="send($event)"/>
+    </div>
+</div>
 
 <script src="vendor/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <script src="vendor/angularjs/angular.min.js" type="text/javascript"></script>
