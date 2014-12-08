@@ -1,24 +1,29 @@
 <div class="fadeIn animated">
     <div class="col-sm-6">
+        <legend>Starszyzna:</legend>
         <div class="form-group">
             <label for="name">Nowa osoba:</label>
 
-            <input type="text" id="name" class="form-control" ng-model="newPerson" style="margin-bottom: 20px"
-                   ng-keydown="send($event)" placeholder="Dodaj..."/>
+            <input type="text" id="name" class="form-control" ng-model="newPerson" ng-keydown="sendPerson($event)" placeholder="Dodaj..."/>
         </div>
-        <table class="table table-hover table-bordered table-selectable">
-            <thead>
-            <th>Osoba</th>
-            <th>Bierze udział w losowaniu</th>
-            </thead>
+        <table class="table table-condensed">
             <tbody>
-            <tr ng-repeat="person in people | orderBy: 'name'" ng-class="{'buyer': person.buyer}">
+            <tr ng-repeat="person in people | orderBy: 'name'">
                 <td ng-bind="person.name"></td>
                 <td>
-                    <input type="checkbox" ng-model="person.buyer"/>
-                    <span ng-if="person.buyer">TAK</span>
-                    <span ng-if="!person.buyer">NIE</span>
+                    <button class="btn-link pull-right" ng-click="deletePerson(person)">
+                        <i class="glyphicon  glyphicon-remove text-danger"></i>
+                    </button>
                 </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <legend>Młodzizna:</legend>
+        <table class="table table-condensed">
+            <tbody>
+            <tr ng-repeat="person in youngees | orderBy: 'name'">
+                <td ng-bind="person.name"></td>
             </tr>
             </tbody>
         </table>

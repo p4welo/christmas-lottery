@@ -7,6 +7,7 @@ angular.module("christmas")
             $state.go('login');
         }
         $scope.people = personFactory.findAll();
+        $scope.youngees = personFactory.getYoungees();
         if ($rootScope.login != null) {
             presenceFactory.initPresence($rootScope.login);
         }

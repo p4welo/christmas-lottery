@@ -32,6 +32,30 @@ angular.module("christmas")
             },
             remove: function (person) {
                 return people.$remove(person);
+            },
+            getYoungees: function () {
+                return [
+                    {
+                        name: "Piotr",
+                        login: "gaduss"
+                    },
+                    {
+                        name: "Kacper",
+                        login: "kacperradomski"
+                    },
+                    {
+                        name: "Barbara",
+                        login: "barbara"
+                    },
+                    {
+                        name: "Karolina",
+                        login: "kkasperek"
+                    },
+                    {
+                        name: "Paweł",
+                        login: "p4welo"
+                    }
+                ];
             }
         };
     })

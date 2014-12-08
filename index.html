@@ -14,20 +14,20 @@
 <div class="garland_top"></div>
 <div ng-class="{'container': isLoggedIn}" ng-cloak>
     <div ng-class="{'panel panel-default' : isLoggedIn}">
-        <ul class="nav nav-tabs" ng-if="isLoggedIn" ng-controller="menuController">
-            <li ui-sref-active="active">
-                <a ui-sref="lottery">Loteria</a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="admin">Zarządzaj</a>
-            </li>
+        <ul class="nav nav-tabs" ng-if="isLoggedIn" ng-controller="menuController" style="margin-left: 20px">
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="lottery">Loteria</a>-->
+            <!--</li>-->
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="admin">Zarządzaj</a>-->
+            <!--</li>-->
             <li class="pull-right">
                 <a class="logout-link" ng-click="logout()">
                     Wyloguj
                     <i class="glyphicon glyphicon-log-out"></i>
                 </a>
             </li>
-            <li class="pull-right users-tab" ng-repeat="key in onlinePeople | orderBy: '-$id'">
+            <li class="users-tab" ng-repeat="key in onlinePeople | orderBy: '$id'">
                 <span class="thumbnail text-center">
                     <img ng-src="{{resolveAvatar(key.$id)}}" title="{{key.$id}}">
                     <span class="pull-right">

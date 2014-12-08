@@ -9,15 +9,16 @@ angular.module("christmas")
         }
 
         $scope.people = personFactory.findAll();
-        $scope.send = function (e) {
+        $scope.deletePerson = function (person) {
+            personFactory.remove(person);
+        }
+        $scope.sendPerson = function (e) {
             if (e.keyCode != 13) return;
             personFactory.add({
-                name: $scope.newPerson,
-                buyer: false
+                name: $scope.newPerson
             });
             $scope.newPerson = "";
         }
-//        if ( $rootScope.login != "gaduss" && $rootScope.login != 'p4welo') {
-//            $state.go('lottery');
-//        }
+
+        $scope.youngees = personFactory.getYoungees();
     })
