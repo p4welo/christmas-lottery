@@ -13,7 +13,7 @@ angular.module("christmas")
             }, function(error) {
                 if (error === null) {
                     $rootScope.isLoggedIn = true;
-                    $rootScope.login = $scope.email;
+                    $rootScope.login = $scope.email.split("@")[0];
                     $state.go('lottery');
                 } else {
                     $scope.loginError = true;

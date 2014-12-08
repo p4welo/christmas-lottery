@@ -6,7 +6,7 @@ angular.module("christmas")
         if (!$rootScope.isLoggedIn) {
             $state.go('login');
         }
-        if ( $rootScope.login != "gaduss@gmail.com" && $rootScope.login != 'p4welo@gmail.com') {
+        if ( $rootScope.login != "gaduss" && $rootScope.login != 'p4welo') {
             $state.go('lottery');
         }
     })

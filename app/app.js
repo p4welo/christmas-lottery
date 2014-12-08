@@ -39,7 +39,7 @@ angular.module("christmas", ["firebase", 'ui.router', 'timer'])
         $scope.send = function (e) {
             if (e.keyCode != 13) return;
             messageFactory.add({
-                author: $rootScope.login.split("@")[0],
+                author: $rootScope.login,
                 text: $scope.newMsg,
                 dateTime: Date.now()
             });
