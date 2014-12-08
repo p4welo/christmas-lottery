@@ -1,3 +1,29 @@
 <div class="fadeIn animated">
-admin
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="name">Nowa osoba:</label>
+
+            <input type="text" id="name" class="form-control" ng-model="newPerson" style="margin-bottom: 20px"
+                   ng-keydown="send($event)" placeholder="Dodaj..."/>
+        </div>
+        <table class="table table-hover table-bordered table-selectable">
+            <thead>
+            <th>Osoba</th>
+            <th>Bierze udział w losowaniu</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="person in people | orderBy: 'name'" ng-class="{'buyer': person.buyer}">
+                <td ng-bind="person.name"></td>
+                <td>
+                    <input type="checkbox" ng-model="person.buyer"/>
+                    <span ng-if="person.buyer">TAK</span>
+                    <span ng-if="!person.buyer">NIE</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <legend>Zasady</legend>
+    </div>
 </div>

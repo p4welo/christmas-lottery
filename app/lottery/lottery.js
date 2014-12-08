@@ -6,7 +6,7 @@ angular.module("christmas")
         if (!$rootScope.isLoggedIn) {
             $state.go('login');
         }
-
+        $scope.people = personFactory.findAll();
         presenceFactory.initPresence($rootScope.login);
 
         $scope.christmasDay = new Date(2014, 11, 24, 17,0,0)

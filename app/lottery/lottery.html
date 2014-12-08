@@ -10,6 +10,14 @@
     <div>
         <div class="col-sm-6">
             <legend>Osoby w puli:</legend>
+            <ul>
+                <li ng-repeat="p in people">{{p.name}}</li>
+            </ul>
+
+            <legend>Osoby losujące:</legend>
+            <ul>
+                <li ng-repeat="p in people | filter: {'buyer' : true}">{{p.name}}</li>
+            </ul>
         </div>
         <div class="col-sm-6">
             <legend>Kupuję prezenty:</legend>
