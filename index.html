@@ -15,12 +15,6 @@
 <div ng-class="{'container': isLoggedIn}" ng-cloak>
     <div ng-class="{'panel panel-default' : isLoggedIn}">
         <ul class="nav nav-tabs" ng-if="isLoggedIn" ng-controller="menuController" style="margin-left: 20px">
-            <!--<li ui-sref-active="active">-->
-                <!--<a ui-sref="lottery">Loteria</a>-->
-            <!--</li>-->
-            <!--<li ui-sref-active="active">-->
-                <!--<a ui-sref="admin">Zarządzaj</a>-->
-            <!--</li>-->
             <li class="pull-right">
                 <a class="logout-link" ng-click="logout()">
                     Wyloguj
@@ -49,7 +43,7 @@
         <i class="glyphicon" ng-class="{'glyphicon-comment' : !chatVisible, 'glyphicon-chevron-down' : chatVisible}"></i>
     </button>
     </div>
-    <div class="chat-box-inner" ng-show="chatVisible">
+    <div class="chat-box-inner" ng-class="{'chat-expanded': chatVisible}">
         <div style="height: 100%; overflow: scroll; padding: 10px 20px 10px 20px;">
             <div class="row fadeIn animated" ng-repeat="msg in messages | orderBy: '-dateTime'">
                 <span class="thumbnail text-center pull-left" style="margin-right: 10px">
@@ -60,7 +54,7 @@
                 <p class="list-group-item-text" ng-bind="msg.text"></p>
             </div>
         </div>
-        <input type="text" class="form-control" ng-model="newMsg" ng-keydown="send($event)" placeholder="Wiadomość..."/>
+        <input type="text" class="form-control" ng-model="newMsg" ng-keydown="send($event)" placeholder="Wiadomość..." ng-show="chatVisible"/>
     </div>
 </div>
 

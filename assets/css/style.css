@@ -25,14 +25,21 @@ body {
     bottom: 0;
     right: 100px;
     border-radius: 0;
+
+}
+
+.chat-box-inner {
+    height: 0px;
+    overflow: hidden;
+    background-color: white;
+    width: 350px;
+    border: 1px solid rgba(107, 107, 107, 0.41);
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 
-.chat-box-inner {
+.chat-expanded {
     height: 400px;
-    background-color: white;
-    width: 350px;
 }
 
 .btn-chat {

@@ -19,43 +19,80 @@ angular.module("christmas")
         };
     })
 
-    .factory("personFactory", function ($firebase) {
+    .factory("lotteryFactory", function ($firebase) {
         var ref = new Firebase(FIREBASE_URL);
-        var people = $firebase(ref.child('people')).$asArray();
+
+        var youngees = [
+            {
+                name: "Piotr",
+                login: "gaduss",
+                chosen: false
+            },
+            {
+                name: "Kacper",
+                login: "kacperradomski",
+                chosen: false
+            },
+            {
+                name: "Barbara",
+                login: "barbara",
+                chosen: false
+            },
+            {
+                name: "Karolina",
+                login: "kkasperek",
+                chosen: false
+            },
+            {
+                name: "Paweł",
+                login: "p4welo",
+                chosen: false
+            }
+        ];
+
+        var oldies = [
+            {
+                name: "Janusz",
+                key: "janusz",
+                chosen: false
+            },
+            {
+                name: "Jola",
+                key: "jola",
+                chosen: false
+            },
+            {
+                name: "Basia",
+                key: "basia",
+                chosen: false
+            },
+            {
+                name: "Mariola",
+                key: "mariola",
+                chosen: false
+            },
+            {
+                name: "Bogdan",
+                key: "bogdan",
+                chosen: false
+            }
+        ];
 
         return {
-            findAll: function () {
-                return people;
+            findOldies: function () {
+                return $firebase(ref.child('oldies')).$asArray();
             },
-            add: function (person) {
-                return people.$add(person);
+            findChosenByLogin: function (login) {
+                return $firebase(ref.child('lottery/' + login)).$asObject()
             },
-            remove: function (person) {
-                return people.$remove(person);
+            findYoungees: function () {
+                return $firebase(ref.child('youngees')).$asArray();
             },
-            getYoungees: function () {
-                return [
-                    {
-                        name: "Piotr",
-                        login: "gaduss"
-                    },
-                    {
-                        name: "Kacper",
-                        login: "kacperradomski"
-                    },
-                    {
-                        name: "Barbara",
-                        login: "barbara"
-                    },
-                    {
-                        name: "Karolina",
-                        login: "kkasperek"
-                    },
-                    {
-                        name: "Paweł",
-                        login: "p4welo"
-                    }
-                ];
+            wasPerformed: function () {
+                return $firebase(ref.child('lottery/performed')).$asObject();
+            },
+            choose: function (login) {
+
             }
         };
     })
@@ -74,9 +111,20 @@ angular.module("christmas")
                 });
             },
 
+            logout: function (login) {
+                var userRef = new Firebase(FIREBASE_URL + '/presence/' + login);
+                userRef.set('offline');
+            },
+
             onlinePeople: function () {
                 var ref = new Firebase(FIREBASE_URL);
                 return $firebase(ref.child('presence')).$asArray();
+            },
+
+            getSessionData: function (login) {
+                var ref = new Firebase(FIREBASE_URL);
+                var data = $firebase(ref.child('lottery').child(login)).$asObject();
+                return data;
             }
         }
     })

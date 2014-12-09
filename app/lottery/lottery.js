@@ -1,16 +1,20 @@
 angular.module("christmas")
 
-    .controller("lotteryController", function ($rootScope, $scope, personFactory, presenceFactory, avatarFactory, $state) {
+    .controller("lotteryController", function ($rootScope, $scope, lotteryFactory, presenceFactory, avatarFactory, $state) {
 
         $scope.login = $rootScope.login;
         if (!$rootScope.isLoggedIn) {
             $state.go('login');
         }
-        $scope.people = personFactory.findAll();
-        $scope.youngees = personFactory.getYoungees();
         if ($rootScope.login != null) {
             presenceFactory.initPresence($rootScope.login);
         }
 
-        $scope.christmasDay = new Date(2014, 11, 24, 17,0,0)
+        $scope.oldies = lotteryFactory.findOldies();
+        $scope.youngees = lotteryFactory.findYoungees();
+
+        $scope.christmasDay = new Date(2014, 11, 24, 17, 0, 0)
+        $scope.chosen = lotteryFactory.findChosenByLogin($rootScope.login);
+        $scope.performed = lotteryFactory.wasPerformed();
+        $scope.choose = lotteryFactory.choose($rootScope.login);
     })

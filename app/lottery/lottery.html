@@ -1,34 +1,66 @@
 <div class="fadeIn animated">
-    <h3 class="alert alert-success text-center" style="margin-bottom: 20px">
+    <h3 class="alert alert-info text-center" style="margin-bottom: 20px">
         Do Wigilii zostało:
         <br/>
         <timer end-time="christmasDay">{{days}} dni, {{hours}} godzin, {{minutes}} minut, {{seconds}} sekund.</timer>
     </h3>
-    <h3 class="alert alert-danger text-center" style="margin-bottom: 20px">
-        Nie przeprowadzono losowania
-    </h3>
+    <div style="margin-bottom: 20px">
+        <h3 class="alert alert-danger text-center" ng-if="!performed.$value">
+            Nie przeprowadzono losowania
+        </h3>
+
+        <h3 class="alert alert-success text-center" ng-if="performed.$value">
+            Losowanie rozpoczęte!
+        </h3>
+    </div>
 
     <div class="col-xs-12">
-        <div class="col-sm-6 well">
-            <div class="col-sm-6">
-                <legend>Starszyzna:</legend>
-                <ul>
-                    <li ng-repeat="p in people | orderBy: 'name'">{{p.name}}</li>
-                </ul>
-            </div>
-            <div class="col-sm-6">
-                <legend>Młodzizna:</legend>
-                <ul>
-                    <li ng-repeat="p in youngees | orderBy: 'name'">{{p.name}}</li>
-                </ul>
+        <div class="col-sm-6">
+            <div ng-if="performed.$value">
+                <div class="text-center">
+                    <button class="btn btn-success" ng-if="!chosen.performed" ng-click="choose()">Losuj!</button>
+                </div>
+                <div ng-if="chosen.performed" class="well animated tada">
+                    <h3>Gratulacje!</h3>
+
+                    <p>Wylosowałeś(aś) osoby:</p>
+                    <dl class="dl-horizontal">
+                        <dt>Starszyzna</dt>
+                        <dd ng-bind="chosen.older"></dd>
+                        <dt>Młodzizna</dt>
+                        <dd ng-bind="chosen.younger"></dd>
+                    </dl>
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-
+        <div class="col-sm-6 well">
+            <legend>Pula</legend>
+            <div class="col-sm-6" style="margin-bottom: 20px;">
+                <h3>Starszyzna:</h3>
+                <ul>
+                    <li ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <h3>Młodzizna:</h3>
+                <ul>
+                    <li ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>
+                </ul>
+            </div>
+            <legend>Zasady</legend>
+            <ul>
+                <dl class="dl-horizontal">
+                    <dt>Kupujemy paczkę</dt>
+                    <dd>1 osobie ze Starszyzny</dd>
+                    <dd>1 osobie z Młodzizny</dd>
+                    <dt>Budżet paczkowy</dt>
+                    <dd>50 zł</dd>
+                </dl>
+            </ul>
         </div>
     </div>
     <div class="col-xs-12">
-        <legend>Zasady</legend>
+
     </div>
 </div>
 </div>

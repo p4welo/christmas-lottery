@@ -14,23 +14,24 @@ angular.module("christmas", ["firebase", 'ui.router', 'timer'])
                 templateUrl: "app/login/login.html",
                 controller: "loginController"
             })
-            .state('admin', {
-                url: '/admin',
-                templateUrl: "app/admin/admin.html",
-                controller: "adminController"
-            })
+//            .state('admin', {
+//                url: '/admin',
+//                templateUrl: "app/admin/admin.html",
+//                controller: "adminController"
+//            })
     })
 
-    .run(function ($rootScope, $state) {
+    .run(function ($rootScope, $state, presenceFactory) {
         $rootScope.logout = function () {
             $rootScope.isLoggedIn = false;
+            presenceFactory.logout($rootScope.login);
             $rootScope.login = "";
             $state.go('login');
         }
     })
 
     .controller("chatController", function ($scope, $rootScope, messageFactory, avatarFactory) {
-        $scope.chatVisible = false;
+        $scope.chatVisible = true;
         $scope.messages = messageFactory.findAll();
         $scope.newMsg = "";
         $scope.resolveAvatar = function (login) {
