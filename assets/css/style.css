@@ -95,6 +95,6 @@ body {
     cursor: pointer;
 }
 
-.buyer td {
+.buyer td, .chosen {
     font-weight: bold;
 }

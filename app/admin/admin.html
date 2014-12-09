@@ -1,34 +1,5 @@
 <div class="fadeIn animated">
     <div class="col-sm-6">
-        <legend>Starszyzna:</legend>
-        <div class="form-group">
-            <label for="name">Nowa osoba:</label>
-
-            <input type="text" id="name" class="form-control" ng-model="newPerson" ng-keydown="sendPerson($event)" placeholder="Dodaj..."/>
-        </div>
-        <table class="table table-condensed">
-            <tbody>
-            <tr ng-repeat="person in people | orderBy: 'name'">
-                <td ng-bind="person.name"></td>
-                <td>
-                    <button class="btn-link pull-right" ng-click="deletePerson(person)">
-                        <i class="glyphicon  glyphicon-remove text-danger"></i>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <legend>Młodzizna:</legend>
-        <table class="table table-condensed">
-            <tbody>
-            <tr ng-repeat="person in youngees | orderBy: 'name'">
-                <td ng-bind="person.name"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-sm-6">
-        <legend>Zasady</legend>
+        <button class="btn btn-danger" ng-click="resetState()">RESET</button>
     </div>
 </div>

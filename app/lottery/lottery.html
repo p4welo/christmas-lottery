@@ -18,7 +18,13 @@
         <div class="col-sm-6">
             <div ng-if="performed.$value">
                 <div class="text-center">
-                    <button class="btn btn-success" ng-if="!chosen.performed" ng-click="choose()">Losuj!</button>
+                    <button class="btn btn-success" ng-if="!chosen.performed && !choosing" ng-click="choose()">
+                        Losuj!
+                    </button>
+                    <button class="btn btn-success disabled" ng-if="!chosen.performed && choosing">
+                        <i class="fa fa-spinner fa-spin"></i>
+                        Losowanie...
+                    </button>
                 </div>
                 <div ng-if="chosen.performed" class="well animated tada">
                     <h3>Gratulacje!</h3>
@@ -39,12 +45,14 @@
                 <h3>Starszyzna:</h3>
                 <ul>
                     <li ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>
+                    <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>-->
                 </ul>
             </div>
             <div class="col-sm-6">
                 <h3>Młodzizna:</h3>
                 <ul>
                     <li ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>
+                    <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>-->
                 </ul>
             </div>
             <legend>Zasady</legend>

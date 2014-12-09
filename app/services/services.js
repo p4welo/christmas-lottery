@@ -91,8 +91,19 @@ angular.module("christmas")
             wasPerformed: function () {
                 return $firebase(ref.child('lottery/performed')).$asObject();
             },
-            choose: function (login) {
-
+            chooseOldie: function (login, key, name) {
+                var oldieRef = new Firebase(FIREBASE_URL + '/oldies/' + key + "/chosen");
+                oldieRef.set(true);
+                var userRef = new Firebase(FIREBASE_URL + '/lottery/' + login + "/older");
+                userRef.set(name);
+            },
+            chooseYoungee: function (login, key, name) {
+                var youngeeRef = new Firebase(FIREBASE_URL + '/youngees/' + key + "/chosen");
+                youngeeRef.set(true);
+                var userRef = new Firebase(FIREBASE_URL + '/lottery/' + login + "/younger");
+                userRef.set(name);
+                userRef = new Firebase(FIREBASE_URL + '/lottery/' + login + "/performed");
+                userRef.set(true);
             }
         };
     })
