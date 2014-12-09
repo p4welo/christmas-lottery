@@ -40,20 +40,22 @@
             </div>
         </div>
         <div class="col-sm-6 well">
-            <legend>Pula</legend>
-            <div class="col-sm-6" style="margin-bottom: 20px;">
-                <h3>Starszyzna:</h3>
-                <ul>
-                    <li ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>
-                    <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>-->
-                </ul>
-            </div>
-            <div class="col-sm-6">
-                <h3>Młodzizna:</h3>
-                <ul>
-                    <li ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>
-                    <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>-->
-                </ul>
+            <div style="margin-bottom: 20px;">
+                <legend>Pula</legend>
+                <div class="col-sm-6">
+                    <h3>Starszyzna:</h3>
+                    <ul>
+                        <li ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>
+                        <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>-->
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <h3>Młodzizna:</h3>
+                    <ul>
+                        <li ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>
+                        <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>-->
+                    </ul>
+                </div>
             </div>
             <legend>Zasady</legend>
             <ul>

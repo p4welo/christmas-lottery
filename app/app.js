@@ -14,11 +14,11 @@ angular.module("christmas", ["firebase", 'ui.router', 'timer'])
                 templateUrl: "app/login/login.html",
                 controller: "loginController"
             })
-//            .state('admin', {
-//                url: '/admin',
-//                templateUrl: "app/admin/admin.html",
-//                controller: "adminController"
-//            })
+            .state('admin', {
+                url: '/admin',
+                templateUrl: "app/admin/admin.html",
+                controller: "adminController"
+            })
     })
 
     .run(function ($rootScope, $state, presenceFactory) {
@@ -27,6 +27,9 @@ angular.module("christmas", ["firebase", 'ui.router', 'timer'])
             presenceFactory.logout($rootScope.login);
             $rootScope.login = "";
             $state.go('login');
+        }
+        $rootScope.isAdmin = function () {
+            return $rootScope.login == 'p4welo';
         }
     })
 

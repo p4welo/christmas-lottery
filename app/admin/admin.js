@@ -7,16 +7,15 @@ angular.module("christmas")
         if (!$rootScope.isLoggedIn || $scope.login != 'p4welo') {
             $state.go('login');
         }
-        $scope.resetState = function () {
-            lotteryFactory.reset();
-//            var oldies = lotteryFactory.findOldies();
-//            oldies.forEach(function (oldie) {
-//                lotteryFactory.resetOldie(oldie);
-//            });
-//
-//            var youngees = lotteryFactory.findYoungees();
-//            youngees.forEach(function (youngee) {
-//                lotteryFactory.resetYoungee(youngee);
-//            })
+
+        $scope.oldies = lotteryFactory.findOldies();
+        $scope.youngees = lotteryFactory.findYoungees();
+        $scope.lotteryReset = function () {
+            $scope.youngees.forEach(function (youngee) {
+                lotteryFactory.resetYoungee(youngee.login)
+            })
+            $scope.oldies.forEach(function (oldie) {
+                lotteryFactory.resetOldie(oldie.key)
+            })
         }
     })

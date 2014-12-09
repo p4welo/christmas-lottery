@@ -104,6 +104,19 @@ angular.module("christmas")
                 userRef.set(name);
                 userRef = new Firebase(FIREBASE_URL + '/lottery/' + login + "/performed");
                 userRef.set(true);
+            },
+            resetOldie : function (key) {
+                var oldieRef = new Firebase(FIREBASE_URL + '/oldies/' + key + "/chosen");
+                oldieRef.set(false);
+            },
+            resetYoungee: function (key) {
+                console.log(key);
+                var youngeeRef = new Firebase(FIREBASE_URL + '/youngees/' + key + "/chosen");
+                console.log(FIREBASE_URL + '/youngees/' + key + "/chosen");
+                youngeeRef.set(false);
+                var userRef = new Firebase(FIREBASE_URL + '/lottery/' + key + "/performed");
+                console.log(FIREBASE_URL + '/lottery/' + key + "/performed");
+                userRef.set(false);
             }
         };
     })
@@ -130,12 +143,6 @@ angular.module("christmas")
             onlinePeople: function () {
                 var ref = new Firebase(FIREBASE_URL);
                 return $firebase(ref.child('presence')).$asArray();
-            },
-
-            getSessionData: function (login) {
-                var ref = new Firebase(FIREBASE_URL);
-                var data = $firebase(ref.child('lottery').child(login)).$asObject();
-                return data;
             }
         }
     })
