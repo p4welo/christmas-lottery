@@ -117,6 +117,9 @@ angular.module("christmas")
                 var userRef = new Firebase(FIREBASE_URL + '/lottery/' + key + "/performed");
                 console.log(FIREBASE_URL + '/lottery/' + key + "/performed");
                 userRef.set(false);
+            },
+            lotteryData: function () {
+                return $firebase(ref.child('lottery')).$asArray();
             }
         };
     })

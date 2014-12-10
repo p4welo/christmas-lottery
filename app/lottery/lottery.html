@@ -15,6 +15,38 @@
     </div>
 
     <div class="col-xs-12">
+        <div class="col-sm-6 well">
+            <legend>Pula</legend>
+            <div class="col-sm-6">
+                <h4>Starszyzna:</h4>
+                <ul>
+                    <li ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <h4>Młodzizna:</h4>
+                <ul>
+                    <li ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>
+                </ul>
+            </div>
+            <legend>Wzięli udział w losowaniu</legend>
+            <ul class="lottery-list">
+                <li ng-repeat="p in lotteryData | orderBy: '$id' | filter : {'$id': '!performed', 'performed' : true}">
+                    <img ng-src="{{resolveAvatar(p.$id)}}" title="{{p.$id}}" />
+                </li>
+                <!--<li ng-repeat="p in lotteryData | orderBy: '$id' | filter : {'$id': '!performed', 'performed' : true}">{{ p.$id }}</li>-->
+            </ul>
+            <legend>Zasady</legend>
+            <ul>
+                <dl class="dl-horizontal">
+                    <dt>Kupujemy paczkę</dt>
+                    <dd>1 osobie ze Starszyzny</dd>
+                    <dd>1 osobie z Młodzizny</dd>
+                    <dt>Budżet paczkowy</dt>
+                    <dd>50 zł</dd>
+                </dl>
+            </ul>
+        </div>
         <div class="col-sm-6">
             <div ng-if="performed.$value">
                 <div class="text-center">
@@ -39,38 +71,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 well">
-            <div style="margin-bottom: 20px;">
-                <legend>Pula</legend>
-                <div class="col-sm-6">
-                    <h3>Starszyzna:</h3>
-                    <ul>
-                        <li ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>
-                        <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in oldies | orderBy: 'name'">{{ p.name }}</li>-->
-                    </ul>
-                </div>
-                <div class="col-sm-6">
-                    <h3>Młodzizna:</h3>
-                    <ul>
-                        <li ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>
-                        <!--<li ng-class="{'chosen' : p.chosen}" ng-repeat="p in youngees | orderBy: 'name'">{{ p.name }}</li>-->
-                    </ul>
-                </div>
-            </div>
-            <legend>Zasady</legend>
-            <ul>
-                <dl class="dl-horizontal">
-                    <dt>Kupujemy paczkę</dt>
-                    <dd>1 osobie ze Starszyzny</dd>
-                    <dd>1 osobie z Młodzizny</dd>
-                    <dt>Budżet paczkowy</dt>
-                    <dd>50 zł</dd>
-                </dl>
-            </ul>
-        </div>
-    </div>
-    <div class="col-xs-12">
-
     </div>
 </div>
 </div>

@@ -21,16 +21,16 @@
                     <i class="glyphicon glyphicon-log-out"></i>
                 </a>
             </li>
-            <li class="pull-right" ng-if="isAdmin()" ui-sref-active="active">
-                <a class="logout-link" ui-sref="lottery">
-                    Loteria
-                </a>
-            </li>
-            <li class="pull-right" ng-if="isAdmin()" ui-sref-active="active">
-                <a class="logout-link" ui-sref="admin">
-                    Admin
-                </a>
-            </li>
+            <!--<li class="pull-right" ng-if="isAdmin()" ui-sref-active="active">-->
+                <!--<a class="logout-link" ui-sref="lottery">-->
+                    <!--Loteria-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="pull-right" ng-if="isAdmin()" ui-sref-active="active">-->
+                <!--<a class="logout-link" ui-sref="admin">-->
+                    <!--Admin-->
+                <!--</a>-->
+            <!--</li>-->
 
             <li class="users-tab" ng-repeat="key in onlinePeople | orderBy: '$id'">
                 <span class="thumbnail text-center">

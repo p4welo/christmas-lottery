@@ -2,7 +2,6 @@ body {
     background: url("../img/bg.jpg") repeat scroll center top transparent;
 }
 
-
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none;
 }
@@ -78,7 +77,8 @@ body {
 }
 
 .users-tab .thumbnail .pull-right {
-    top: -15px; position: relative;
+    top: -15px;
+    position: relative;
     right: -5px
 }
 
@@ -97,4 +97,13 @@ body {
 
 .buyer td, .chosen {
     font-weight: bold;
+}
+
+.lottery-list li {
+    display: inline;
+    list-style: none;
+}
+
+.lottery-list li img {
+    width: 50px;
 }

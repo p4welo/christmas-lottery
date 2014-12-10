@@ -13,6 +13,11 @@ angular.module("christmas")
         $scope.oldies = lotteryFactory.findOldies();
         $scope.youngees = lotteryFactory.findYoungees();
 
+        $scope.lotteryData = lotteryFactory.lotteryData();
+        $scope.resolveAvatar = function (login) {
+            return avatarFactory.getByLogin(login)
+        }
+
         $scope.christmasDay = new Date(2014, 11, 24, 17, 0, 0)
         $scope.chosen = lotteryFactory.findChosenByLogin($rootScope.login);
         $scope.performed = lotteryFactory.wasPerformed();
