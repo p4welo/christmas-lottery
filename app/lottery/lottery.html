@@ -34,7 +34,6 @@
                 <li ng-repeat="p in lotteryData | orderBy: '$id' | filter : {'$id': '!performed', 'performed' : true}">
                     <img ng-src="{{resolveAvatar(p.$id)}}" title="{{p.$id}}" />
                 </li>
-                <!--<li ng-repeat="p in lotteryData | orderBy: '$id' | filter : {'$id': '!performed', 'performed' : true}">{{ p.$id }}</li>-->
             </ul>
             <legend>Zasady</legend>
             <ul>
