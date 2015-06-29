@@ -1,5 +1,5 @@
 # christmas-lottery
-
+Christmas family gift lottery engine
 
 ### Stack
 - Firebase - https://www.firebase.com
